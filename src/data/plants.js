@@ -1,0 +1,92 @@
+export const categories = [
+  {
+    id: 'aromatic',
+    name: 'Aromatic Plants',
+    description: 'Fragrant plants that fill your home with natural scent.',
+  },
+  {
+    id: 'medicinal',
+    name: 'Medicinal Plants',
+    description: 'Herbs with long-standing traditional uses.',
+  },
+  {
+    id: 'purifying',
+    name: 'Air-Purifying Plants',
+    description: 'Plants that help improve indoor air quality.',
+  },
+];
+
+export const plants = [
+  {
+    id: 'lavender',
+    name: 'Lavender',
+    category: 'aromatic',
+    price: 12.99,
+    image: '💜',
+    description: 'Calming scent and beautiful purple blooms. Loves sun.',
+  },
+  {
+    id: 'jasmine',
+    name: 'Jasmine',
+    category: 'aromatic',
+    price: 15.5,
+    image: '🤍',
+    description: 'Sweet, intoxicating fragrance from delicate white flowers.',
+  },
+  {
+    id: 'rosemary',
+    name: 'Rosemary',
+    category: 'aromatic',
+    price: 9.99,
+    image: '🌿',
+    description: 'Woody, pine-like aroma. Great for the kitchen windowsill.',
+  },
+  {
+    id: 'aloe',
+    name: 'Aloe Vera',
+    category: 'medicinal',
+    price: 11.0,
+    image: '🪴',
+    description: 'Succulent gel is soothing for minor burns and skin irritation.',
+  },
+  {
+    id: 'mint',
+    name: 'Peppermint',
+    category: 'medicinal',
+    price: 8.5,
+    image: '🍃',
+    description: 'Refreshing leaves for teas and digestive comfort.',
+  },
+  {
+    id: 'echinacea',
+    name: 'Echinacea',
+    category: 'medicinal',
+    price: 13.75,
+    image: '🌸',
+    description: 'Coneflower traditionally used to support immunity.',
+  },
+  {
+    id: 'snake-plant',
+    name: 'Snake Plant',
+    category: 'purifying',
+    price: 18.0,
+    image: '🌱',
+    description: 'Nearly indestructible and excellent at filtering air overnight.',
+  },
+  {
+    id: 'peace-lily',
+    name: 'Peace Lily',
+    category: 'purifying',
+    price: 16.25,
+    image: '🕊️',
+    description: 'Elegant white spathes and strong air-cleaning ability.',
+  },
+  {
+    id: 'spider-plant',
+    name: 'Spider Plant',
+    category: 'purifying',
+    price: 10.0,
+    image: '🕷️',
+    description: 'Fast-growing, pet-friendly and easy to propagate.',
+  },
+];
