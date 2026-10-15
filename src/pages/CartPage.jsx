@@ -1,45 +1,55 @@
-import { useCart } from '../context/CartContext.jsx';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  clearCart,
+  selectCartItems,
+  selectTotalAmount,
+  selectTotalItems,
+} from '../redux/CartSlice.jsx';
 import CartItem from '../components/CartItem.jsx';
 
-export default function CartPage({ onContinueShopping }) {
-  const { items, totalCost, totalItems, clearCart } = useCart();
+export default function CartPage() {
+  const dispatch = useDispatch();
+  const items = useSelector(selectCartItems);
+  const totalAmount = useSelector(selectTotalAmount);
+  const totalItems = useSelector(selectTotalItems);
+  const [checkoutMessage, setCheckoutMessage] = useState('');
 
   if (items.length === 0) {
     return (
       <main className="page cart-page">
-        <h1>Your Cart</h1>
+        <h1>Your Shopping Cart</h1>
         <p>Your cart is empty.</p>
-        <button className="btn" onClick={onContinueShopping}>
-          Continue Shopping
-        </button>
+        <Link to="/products" className="btn">Continue Shopping</Link>
       </main>
     );
   }
 
   return (
     <main className="page cart-page">
-      <h1>Your Cart</h1>
+      <h1>Your Shopping Cart</h1>
       <div className="cart-list">
         {items.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
       </div>
-      <div className="cart-total">
+
+      <div className="cart-summary">
         <p>Total items: {totalItems}</p>
         <p className="total-cost">
-          Total: <span data-testid="total-cost">${totalCost.toFixed(2)}</span>
+          Total amount: <span data-testid="total-cost">${totalAmount.toFixed(2)}</span>
         </p>
         <div className="cart-actions">
-          <button className="btn" onClick={onContinueShopping}>
-            Continue Shopping
-          </button>
-          <button className="btn btn-secondary" onClick={clearCart}>
+          <Link to="/products" className="btn btn-secondary">Continue Shopping</Link>
+          <button className="btn btn-secondary" onClick={() => dispatch(clearCart())}>
             Clear Cart
           </button>
-          <button className="btn" disabled>
-            Checkout (coming soon)
+          <button className="btn" onClick={() => setCheckoutMessage('Checkout is Coming Soon!')}>
+            Checkout
           </button>
         </div>
+        {checkoutMessage && <p className="checkout-message">{checkoutMessage}</p>}
       </div>
     </main>
   );

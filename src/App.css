@@ -9,10 +9,13 @@ body {
   color: #1f3a25;
 }
 
-.header {
+/* Navbar */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   padding: 1rem 2rem;
   background: #2d6a4f;
   color: #fff;
@@ -24,29 +27,80 @@ body {
 .brand {
   font-size: 1.4rem;
   font-weight: 700;
-  cursor: pointer;
-}
-
-.nav button {
-  background: none;
-  border: 2px solid transparent;
   color: #fff;
-  font-size: 1rem;
-  padding: 0.4rem 0.9rem;
-  margin-left: 0.5rem;
-  border-radius: 999px;
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.nav button.active,
-.nav button:hover {
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
   border-color: #fff;
 }
 
+.cart-badge {
+  background: #fff;
+  color: #2d6a4f;
+  border-radius: 999px;
+  padding: 0 0.5rem;
+  font-weight: 700;
+  margin-left: 0.25rem;
+}
+
+/* Landing page */
+.landing {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background-color: #1f3a25;
+  /* Place a photo at public/landing-bg.jpg; the gradient shows if it's missing. */
+  background-image:
+    linear-gradient(rgba(31, 58, 37, 0.6), rgba(31, 58, 37, 0.6)),
+    url('/landing-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.landing-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.landing-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.btn-large {
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+}
+
+/* Pages */
 .page {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.about-us p {
+  line-height: 1.6;
+  color: #3b5a43;
 }
 
 .category {
@@ -73,11 +127,9 @@ body {
   flex-direction: column;
 }
 
-.product-image {
-  font-size: 3.5rem;
-  text-align: center;
-  padding: 1rem 0;
-  background: #e9f5ec;
+.thumbnail {
+  width: 100%;
+  height: auto;
   border-radius: 8px;
 }
 
@@ -103,6 +155,7 @@ body {
   font-size: 1.1rem;
 }
 
+/* Buttons */
 .btn {
   background: #2d6a4f;
   color: #fff;
@@ -111,6 +164,8 @@ body {
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn:hover:not(:disabled) {
@@ -130,20 +185,16 @@ body {
   background: #c1121f;
 }
 
+/* Cart */
 .cart-item {
   display: grid;
-  grid-template-columns: 70px 1fr auto auto auto;
+  grid-template-columns: 90px 1fr auto auto auto;
   align-items: center;
   gap: 1rem;
   background: #fff;
   padding: 1rem;
   border-radius: 10px;
   margin-bottom: 1rem;
-}
-
-.cart-item-image {
-  font-size: 2.5rem;
-  text-align: center;
 }
 
 .quantity-controls {
@@ -163,7 +214,7 @@ body {
   font-size: 1rem;
 }
 
-.cart-total {
+.cart-summary {
   text-align: right;
   margin-top: 2rem;
 }
@@ -180,13 +231,17 @@ body {
   flex-wrap: wrap;
 }
 
+.checkout-message {
+  color: #2d6a4f;
+  font-weight: 700;
+}
+
 @media (max-width: 640px) {
   .cart-item {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  .header {
-    flex-direction: column;
-    gap: 0.5rem;
+  .landing-content h1 {
+    font-size: 2.2rem;
   }
 }
