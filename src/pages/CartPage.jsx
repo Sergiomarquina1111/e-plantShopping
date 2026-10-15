@@ -7,7 +7,7 @@ import {
   selectTotalAmount,
   selectTotalItems,
 } from '../redux/CartSlice.jsx';
-import CartItem from '../components/CartItem.jsx';
+import CartItem, { CartTotal } from '../components/CartItem.jsx';
 
 export default function CartPage() {
   const dispatch = useDispatch();
@@ -35,22 +35,17 @@ export default function CartPage() {
         ))}
       </div>
 
-      <div className="cart-summary">
-        <p>Total items: {totalItems}</p>
-        <p className="total-cost">
-          Total amount: <span data-testid="total-cost">${totalAmount.toFixed(2)}</span>
-        </p>
-        <div className="cart-actions">
-          <Link to="/products" className="btn btn-secondary">Continue Shopping</Link>
-          <button className="btn btn-secondary" onClick={() => dispatch(clearCart())}>
-            Clear Cart
-          </button>
-          <button className="btn" onClick={() => setCheckoutMessage('Checkout is Coming Soon!')}>
-            Checkout
-          </button>
-        </div>
-        {checkoutMessage && <p className="checkout-message">{checkoutMessage}</p>}
+      <CartTotal totalItems={totalItems} totalAmount={totalAmount} />
+      <div className="cart-actions">
+        <Link to="/products" className="btn btn-secondary">Continue Shopping</Link>
+        <button className="btn btn-secondary" onClick={() => dispatch(clearCart())}>
+          Clear Cart
+        </button>
+        <button className="btn" onClick={() => setCheckoutMessage('Checkout is Coming Soon!')}>
+          Checkout
+        </button>
       </div>
+      {checkoutMessage && <p className="checkout-message">{checkoutMessage}</p>}
     </main>
   );
 }
